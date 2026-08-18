@@ -1,8 +1,43 @@
-const form=document.getElementById("complaintForm"),btn=document.getElementById("submitBtn"),msg=document.getElementById("formMsg"),modal=document.getElementById("modal"),idText=document.getElementById("idText"),progress=document.querySelector(".progress");
-function localId(){const y=new Date().getFullYear(),k="vim_"+y,n=parseInt(localStorage.getItem(k)||"0",10)+1;localStorage.setItem(k,n);return `VIM-${y}-${String(n).padStart(4,"0")}`}
-function showMessage(t,g=false){msg.textContent=t;msg.style.color=g?"#168148":"#b3261e"}
-form.addEventListener("submit",async e=>{e.preventDefault();const d=Object.fromEntries(new FormData(form).entries());if(!/^[6-9]\d{9}$/.test(d.mobile)){showMessage("कृपया सही 10 अंकों का मोबाइल नंबर दर्ज करें।");return}const id=localId();d.complaintId=id;d.receivedAt=new Date().toISOString();btn.disabled=true;btn.textContent="जमा हो रहा है...";try{if(!GOOGLE_SCRIPT_URL)throw Error("URL missing");const r=await fetch(GOOGLE_SCRIPT_URL,{method:"POST",body:new URLSearchParams(d)});const result=await r.json().catch(()=>({success:true}));if(result.success===false)throw Error(result.error||"Submission failed");form.reset();idText.textContent=`Complaint ID: ${id}`;modal.classList.add("show")}catch(err){console.error(err);showMessage("शिकायत भेजी नहीं जा सकी। कृपया कुछ देर बाद दोबारा प्रयास करें।")}finally{btn.disabled=false;btn.textContent="शिकायत जमा करें →"}});
-function closeModal(){modal.classList.remove("show")}
-const observer=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting)x.target.classList.add("visible")}),{threshold:.12});document.querySelectorAll(".reveal").forEach(x=>observer.observe(x));
-document.querySelectorAll(".tilt").forEach(card=>{card.addEventListener("pointermove",e=>{const r=card.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;card.style.transform=`perspective(700px) rotateX(${(y/r.height-.5)*-7}deg) rotateY(${(x/r.width-.5)*7}deg) translateY(-3px)`});card.addEventListener("pointerleave",()=>card.style.transform="")});
-addEventListener("scroll",()=>{const h=document.documentElement.scrollHeight-innerHeight;progress.style.width=(scrollY/h*100)+"%"});
+const form=document.getElementById("complaintForm");
+const btn=document.getElementById("submitBtn");
+const msg=document.getElementById("formMsg");
+const modal=document.getElementById("modal");
+const idText=document.getElementById("idText");
+
+function localId(){
+  const y=new Date().getFullYear();
+  const key="vim_"+y;
+  const n=(parseInt(localStorage.getItem(key)||"0",10)+1);
+  localStorage.setItem(key,n);
+  return `VIM-${y}-${String(n).padStart(4,"0")}`;
+}
+function showMessage(text,good=false){msg.textContent=text;msg.style.color=good?"#168148":"#b3261e"}
+form.addEventListener("submit",async(e)=>{
+  e.preventDefault();
+  const data=Object.fromEntries(new FormData(form).entries());
+  if(!/^[6-9]\d{9}$/.test(data.mobile)){showMessage("कृपया सही 10 अंकों का मोबाइल नंबर दर्ज करें।");return}
+  const id=localId();
+  data.complaintId=id;
+  data.receivedAt=new Date().toISOString();
+  data.status="Received";
+  btn.disabled=true; btn.textContent="जमा हो रहा है...";
+  try{
+    if(typeof GOOGLE_SCRIPT_URL==="undefined" || !GOOGLE_SCRIPT_URL){
+      throw new Error("Google Script URL not configured");
+    }
+    const body=new URLSearchParams(data);
+    const response=await fetch(GOOGLE_SCRIPT_URL,{method:"POST",body});
+    const result=await response.json().catch(()=>({ok:true}));
+    if(result.ok===false) throw new Error(result.error||"Submission failed");
+    form.reset();
+    idText.textContent=`Complaint ID: ${id}`;
+    modal.classList.add("show");
+    modal.setAttribute("aria-hidden","false");
+  }catch(err){
+    console.error(err);
+    showMessage("शिकायत भेजी नहीं जा सकी। कृपया कुछ देर बाद दोबारा प्रयास करें या Google Script URL सेट करें।");
+  }finally{
+    btn.disabled=false;btn.textContent="शिकायत जमा करें";
+  }
+});
+function closeModal(){modal.classList.remove("show");modal.setAttribute("aria-hidden","true")}
