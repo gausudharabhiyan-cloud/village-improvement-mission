@@ -4,4 +4,4 @@ const ADMIN_API_URL="https://script.google.com/macros/s/AKfycbwBBIMpl5n2Dmq91D2f
 // Admin login credentials
 // इन्हें अपनी पसंद से बदलें
 const ADMIN_ID="Rastriyasenaa";
-const ADMIN_PASSWORD="Vikki@A";
+const ADMIN_PASSWORD="Vikki@620A";
