@@ -1,91 +1,10 @@
-<!DOCTYPE html>
-<html lang="hi">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>गांव सुधार मिशन | शिकायत दर्ज करें</title>
-<meta name="description" content="गांव सुधार मिशन — गांव की समस्याओं को दर्ज करें और संबंधित विभाग तक पहुंचाने में सहयोग करें।">
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
-<header class="hero">
-<nav class="nav container">
-  <a class="brand" href="#">
-    <span class="brand-logo">🌱</span>
-    <span><strong>गांव सुधार मिशन</strong><small>Village Improvement Mission</small></span>
-  </a>
-  <a class="btn light" href="#complaint">समस्या दर्ज करें</a>
-</nav>
-<div class="hero-grid container">
-  <div>
-    <span class="pill">An Initiative by Team RashtriyaSenaa 🇮🇳</span>
-    <h1>आपकी समस्या,<br><em>हमारी आवाज़।</em></h1>
-    <p>सड़क, नाली, सफाई, पानी, बिजली, स्ट्रीट लाइट और अन्य मूलभूत समस्याओं की जानकारी हमें भेजें।</p>
-    <div class="actions"><a class="btn primary" href="#complaint">शिकायत दर्ज करें</a><a class="btn outline" href="#mission">हम क्या करते हैं?</a></div>
-  </div>
-  <div class="hero-box"><div>🏡</div><h3>बेहतर गांव • बेहतर भविष्य</h3><p>शिक्षा · स्वच्छता · जागरूकता · विकास</p></div>
-</div>
-</header>
-
-<main>
-<section id="mission" class="section container">
-  <div class="heading"><span>OUR MISSION</span><h2>गांवों की समस्याओं को व्यवस्थित आवाज़ देना</h2><p>हम शिकायतों को रिकॉर्ड, सत्यापित और संबंधित विभाग/प्रशासन के समक्ष उठाने का प्रयास करते हैं।</p></div>
-  <div class="cards">
-    <article><b>📋</b><h3>शिकायत दर्ज</h3><p>समस्या, स्थान और उपलब्ध फोटो/वीडियो की जानकारी दें।</p></article>
-    <article><b>🔎</b><h3>सत्यापन</h3><p>प्राप्त जानकारी की समीक्षा और आवश्यक सत्यापन।</p></article>
-    <article><b>📢</b><h3>मामला उठाना</h3><p>उचित विभाग/प्रशासन तक मामला पहुंचाने का प्रयास।</p></article>
-    <article><b>✅</b><h3>Follow-up</h3><p>कार्रवाई और समाधान की स्थिति का रिकॉर्ड।</p></article>
-  </div>
-</section>
-
-<section id="complaint" class="section green">
-<div class="container">
-<div class="heading"><span>REPORT A PROBLEM</span><h2>गांव की समस्या दर्ज करें</h2><p>कृपया सही जानकारी दें। आवश्यक होने पर आपसे संपर्क किया जा सकता है।</p></div>
-<form id="complaintForm" class="form-card">
-  <div class="grid two">
-    <label>शिकायतकर्ता का नाम *<input name="name" required maxlength="80" autocomplete="name"></label>
-    <label>मोबाइल / WhatsApp *<input name="mobile" required inputmode="tel" pattern="[6-9][0-9]{9}" maxlength="10" placeholder="10 अंकों का नंबर"></label>
-  </div>
-  <div class="grid three">
-    <label>प्रदेश *<input name="state" required value="उत्तर प्रदेश" maxlength="60"></label>
-    <label>जिला *<input name="district" required maxlength="60"></label>
-    <label>ब्लॉक / तहसील *<input name="block" required maxlength="80"></label>
-  </div>
-  <div class="grid two">
-    <label>ग्राम पंचायत *<input name="panchayat" required maxlength="100"></label>
-    <label>गांव *<input name="village" required maxlength="100"></label>
-  </div>
-  <label>समस्या की श्रेणी *
-    <select name="category" required>
-      <option value="">चुनें</option><option>सड़क</option><option>नाली / जल निकासी</option><option>साफ-सफाई</option><option>कूड़ा / कूड़ेदान</option><option>स्ट्रीट लाइट</option><option>पेयजल</option><option>बिजली</option><option>स्कूल / शिक्षा</option><option>स्वास्थ्य</option><option>शौचालय</option><option>सार्वजनिक भवन</option><option>अन्य</option>
-    </select>
-  </label>
-  <label>समस्या की सही जगह *<input name="location" required maxlength="250" placeholder="जैसे: मुख्य सड़क, स्कूल के सामने"></label>
-  <label>समस्या का पूरा विवरण *<textarea name="description" required maxlength="2000" rows="5" placeholder="समस्या कब से है और लोगों को क्या परेशानी हो रही है?"></textarea></label>
-  <label>फोटो / वीडियो का लिंक <input name="media" type="url" placeholder="Google Drive आदि का share link"></label>
-  <label class="consent"><input type="checkbox" name="consent" required> <span>मैं पुष्टि करता/करती हूं कि दी गई जानकारी मेरी जानकारी के अनुसार सही है और इसे संबंधित विभाग/प्रशासन के समक्ष उठाने का प्रयास किया जा सकता है।</span></label>
-  <button id="submitBtn" class="btn primary full" type="submit">शिकायत जमा करें</button>
-  <div id="formMsg" class="form-msg" role="status"></div>
-</form>
-</div>
-</section>
-
-<section class="section container">
-<div class="heading"><span>PROCESS</span><h2>शिकायत के बाद प्रक्रिया</h2></div>
-<div class="steps">
-  <div><i>01</i><h3>Received</h3><p>शिकायत प्राप्त।</p></div>
-  <div><i>02</i><h3>Verified</h3><p>जानकारी की समीक्षा।</p></div>
-  <div><i>03</i><h3>Forwarded</h3><p>संबंधित विभाग तक मामला।</p></div>
-  <div><i>04</i><h3>Follow-up</h3><p>कार्रवाई की स्थिति।</p></div>
-  <div><i>05</i><h3>Resolved</h3><p>समाधान का रिकॉर्ड।</p></div>
-</div>
-</section>
-</main>
-
+<!doctype html><html lang="hi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>गांव सुधार मिशन | Village Improvement Mission</title><meta name="description" content="गांव सुधार मिशन — गांव की समस्याओं को आवाज़ देने की एक पहल।"><link rel="stylesheet" href="style.css"></head><body>
+<div class="progress"></div>
+<header class="hero"><nav class="nav container"><a href="#" class="brand"><span class="brand-mark">🌱</span><span><strong>गांव सुधार मिशन</strong><small>Village Improvement Mission</small></span></a><a href="#complaint" class="btn small">समस्या दर्ज करें</a></nav>
+<div class="hero-scene" aria-hidden="true"><div class="sun"></div><div class="cloud c1"></div><div class="cloud c2"></div><div class="hill back"></div><div class="hill front"></div><div class="field f1"></div><div class="field f2"></div><div class="road"></div><div class="house h1"><i></i></div><div class="house h2"><i></i></div><div class="tree t1"></div><div class="tree t2"></div><div class="tree t3"></div><div class="water-tank">◉</div><div class="bird b1">⌁</div><div class="bird b2">⌁</div></div>
+<div class="hero-content container"><div class="hero-copy reveal"><span class="pill">An Initiative by Team RashtriyaSenaa 🇮🇳</span><h1>आपकी समस्या,<br><em>हमारी आवाज़।</em></h1><p>गांव की सड़क, नाली, सफाई, पानी, बिजली, स्ट्रीट लाइट और अन्य मूलभूत समस्याओं की जानकारी हमें भेजें।</p><div class="actions"><a class="btn primary" href="#complaint">शिकायत दर्ज करें <span>→</span></a><a class="btn ghost" href="#mission">मिशन जानें</a></div></div><div class="floating-card reveal delay"><div class="mini-village">🏡</div><h3>बेहतर गांव • बेहतर भविष्य</h3><p>शिक्षा · स्वच्छता · जागरूकता · विकास</p><div class="orb"></div></div></div></header>
+<section id="mission" class="section container"><div class="heading reveal"><span>OUR MISSION</span><h2>गांवों की समस्याओं को व्यवस्थित आवाज़ देना</h2><p>समस्या दर्ज करें, जानकारी की समीक्षा करें और संबंधित विभाग तक मामला पहुंचाने का प्रयास करें।</p></div><div class="cards"><article class="tilt reveal"><b>📋</b><h3>शिकायत दर्ज</h3><p>समस्या, स्थान और फोटो/वीडियो की जानकारी दें।</p></article><article class="tilt reveal"><b>🔎</b><h3>सत्यापन</h3><p>प्राप्त जानकारी की समीक्षा और आवश्यक सत्यापन।</p></article><article class="tilt reveal"><b>📢</b><h3>आवाज़ उठाएं</h3><p>उचित विभाग/प्रशासन तक मामला पहुंचाने का प्रयास।</p></article><article class="tilt reveal"><b>✅</b><h3>Follow-up</h3><p>कार्रवाई और समाधान की स्थिति का रिकॉर्ड।</p></article></div></section>
+<section id="complaint" class="section complaint"><div class="container"><div class="heading reveal"><span>REPORT A PROBLEM</span><h2>गांव की समस्या दर्ज करें</h2><p>कृपया सही जानकारी दें। आवश्यक होने पर आपसे संपर्क किया जा सकता है।</p></div><form id="complaintForm" class="form-card reveal"><div class="grid two"><label>शिकायतकर्ता का नाम *<input name="name" required maxlength="80"></label><label>मोबाइल / WhatsApp *<input name="mobile" required inputmode="tel" pattern="[6-9][0-9]{9}" maxlength="10" placeholder="10 अंकों का नंबर"></label></div><div class="grid three"><label>प्रदेश *<input name="state" required value="उत्तर प्रदेश"></label><label>जिला *<input name="district" required></label><label>ब्लॉक / तहसील *<input name="block" required></label></div><div class="grid two"><label>ग्राम पंचायत *<input name="panchayat" required></label><label>गांव *<input name="village" required></label></div><label>समस्या की श्रेणी *<select name="category" required><option value="">चुनें</option><option>सड़क</option><option>नाली / जल निकासी</option><option>साफ-सफाई</option><option>कूड़ा / कूड़ेदान</option><option>स्ट्रीट लाइट</option><option>पेयजल</option><option>बिजली</option><option>स्कूल / शिक्षा</option><option>स्वास्थ्य</option><option>शौचालय</option><option>सार्वजनिक भवन</option><option>अन्य</option></select></label><label>समस्या की सही जगह *<input name="location" required maxlength="250" placeholder="जैसे: मुख्य सड़क, स्कूल के सामने"></label><label>समस्या का पूरा विवरण *<textarea name="description" required maxlength="2000" rows="5"></textarea></label><label>फोटो / वीडियो का लिंक <input name="media" type="url" placeholder="Google Drive आदि का share link"></label><label class="consent"><input type="checkbox" name="consent" required><span>मैं पुष्टि करता/करती हूं कि दी गई जानकारी सही है और इसे संबंधित विभाग/प्रशासन के समक्ष उठाने का प्रयास किया जा सकता है।</span></label><button id="submitBtn" class="btn primary full" type="submit">शिकायत जमा करें →</button><div id="formMsg" role="status"></div></form></div></section>
+<section class="section container"><div class="heading reveal"><span>PROCESS</span><h2>शिकायत के बाद प्रक्रिया</h2></div><div class="steps"><div class="step reveal"><i>01</i><h3>Received</h3><p>शिकायत प्राप्त</p></div><div class="step reveal"><i>02</i><h3>Verified</h3><p>जानकारी की समीक्षा</p></div><div class="step reveal"><i>03</i><h3>Forwarded</h3><p>संबंधित विभाग तक</p></div><div class="step reveal"><i>04</i><h3>Follow-up</h3><p>कार्रवाई की स्थिति</p></div><div class="step reveal"><i>05</i><h3>Resolved</h3><p>समाधान का रिकॉर्ड</p></div></div></section>
 <footer><div class="container footer"><div><strong>गांव सुधार मिशन</strong><p>Building Better Villages, Together.</p></div><div><strong>An Initiative by Team RashtriyaSenaa 🇮🇳</strong><p>जय भीम • जय संविधान</p></div></div></footer>
-
-<div id="modal" class="modal" aria-hidden="true"><div class="modal-box"><div class="ok">✓</div><h2>शिकायत सफलतापूर्वक दर्ज हुई</h2><p id="idText"></p><button class="btn primary" onclick="closeModal()">ठीक है</button></div></div>
-<script src="config.js"></script>
-<script src="script.js"></script>
-</body>
-</html>
+<div id="modal" class="modal"><div class="modal-box"><div class="ok">✓</div><h2>शिकायत दर्ज हो गई!</h2><p id="idText"></p><p>Complaint ID सुरक्षित रखें।</p><button class="btn primary" onclick="closeModal()">ठीक है</button></div></div><script src="config.js"></script><script src="script.js"></script></body></html>
